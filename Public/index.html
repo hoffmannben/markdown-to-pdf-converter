@@ -96,6 +96,49 @@ Schreibe hier dein Markdown...
             <span>.pdf</span>
         </div>
 
+        <!-- PDF Style Optionen -->
+        <div class="pdf-styles-section">
+            <h3>🎨 PDF-Styling</h3>
+            <div class="style-options">
+                <div class="style-option">
+                    <label for="fontSize">Schriftgröße:</label>
+                    <select id="fontSize">
+                        <option value="small">Klein (10pt)</option>
+                        <option value="normal" selected>Normal (12pt)</option>
+                        <option value="large">Groß (14pt)</option>
+                        <option value="xlarge">Sehr groß (16pt)</option>
+                    </select>
+                </div>
+
+                <div class="style-option">
+                    <label for="fontFamily">Schriftart:</label>
+                    <select id="fontFamily">
+                        <option value="serif" selected>Serif (Times New Roman)</option>
+                        <option value="sans-serif">Sans-Serif (Arial)</option>
+                        <option value="monospace">Monospace (Courier)</option>
+                    </select>
+                </div>
+
+                <div class="style-option">
+                    <label for="margins">Seitenränder:</label>
+                    <select id="margins">
+                        <option value="narrow">Schmal (1cm)</option>
+                        <option value="normal" selected>Normal (2cm)</option>
+                        <option value="wide">Breit (3cm)</option>
+                    </select>
+                </div>
+
+                <div class="style-option">
+                    <label for="lineHeight">Zeilenabstand:</label>
+                    <select id="lineHeight">
+                        <option value="compact">Kompakt (1.3)</option>
+                        <option value="normal" selected>Normal (1.6)</option>
+                        <option value="relaxed">Entspannt (2.0)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
         <button id="convertBtn">🚀 Konvertieren zu PDF</button>
 
         <!-- Ladebalken -->

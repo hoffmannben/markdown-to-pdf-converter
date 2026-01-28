@@ -252,10 +252,17 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
         return;
     }
 
+    // Markdown als Blob für FormData erstellen
     const blob = new Blob([markdownContent], { type: 'text/markdown' });
     const formData = new FormData();
     formData.append('markdown', blob, 'document.md');
     formData.append('filename', filename);
+
+// PDF Style Optionen hinzufügen
+    formData.append('fontSize', document.getElementById('fontSize').value);
+    formData.append('fontFamily', document.getElementById('fontFamily').value);
+    formData.append('margins', document.getElementById('margins').value);
+    formData.append('lineHeight', document.getElementById('lineHeight').value);
 
     document.getElementById('loadingContainer').style.display = 'block';
     document.getElementById('status').style.display = 'none';

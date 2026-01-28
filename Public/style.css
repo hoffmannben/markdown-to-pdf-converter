@@ -775,3 +775,78 @@ body.dark-mode .tab-btn.active {
     background: var(--surface);
     color: var(--primary-light);
 }
+/* PDF Styles Section */
+.pdf-styles-section {
+    margin: 32px auto;
+    padding: 32px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow);
+    max-width: 800px;
+}
+
+.pdf-styles-section h3 {
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 24px;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.style-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.style-option {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.style-option label {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95em;
+}
+
+.style-option select {
+    padding: 12px 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 14px;
+    background: var(--background);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.style-option select:hover {
+    border-color: var(--primary-light);
+}
+
+.style-option select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+/* Dark Mode für PDF Styles */
+body.dark-mode .pdf-styles-section {
+    background: var(--surface);
+}
+
+body.dark-mode .style-option select {
+    background: var(--background);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .style-options {
+        grid-template-columns: 1fr;
+    }
+}

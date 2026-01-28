@@ -9,6 +9,13 @@
 <h1>Markdown zu PDF Konverter</h1>
 <input type="file" id="fileInput" accept=".md">
 <button id="convertBtn">Konvertieren</button>
+
+<!-- Ladebalken hinzufügen -->
+<div id="loadingContainer" style="display: none;">
+    <div id="loadingBar"></div>
+    <p id="loadingText">Wird konvertiert...</p>
+</div>
+
 <div id="status"></div>
 <script src="script.js"></script>
 </body>

@@ -1,3 +1,18 @@
+console.log('JavaScript lädt!');
+
+document.getElementById('convertBtn').addEventListener('click', async () => {
+    console.log('Button wurde geklickt!');
+
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert('Bitte wähle eine Markdown-Datei aus');
+        return;
+    }
+
+    // Rest des Codes...
+});
 document.getElementById('convertBtn').addEventListener('click', async () => {
     const fileInput = document.getElementById('fileInput');
     const file = fileInput.files[0];

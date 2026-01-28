@@ -273,3 +273,125 @@ button {
     margin-top: 15px;
     min-height: 20px;
 }
+/* Upload Mode Toggle */
+.upload-mode-toggle {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.upload-mode-toggle label {
+    cursor: pointer;
+    padding: 8px 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.upload-mode-toggle input[type="radio"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.upload-mode-toggle label:has(input:checked) {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+/* Files List */
+#filesList {
+    max-width: 600px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+#filesList h3 {
+    text-align: center;
+    color: #333;
+}
+
+#filesListItems {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#filesListItems li {
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    transition: all 0.3s;
+}
+
+#filesListItems li:hover {
+    background-color: #e8f5e9;
+    border-color: #4CAF50;
+}
+
+#filesListItems li.dragging {
+    opacity: 0.5;
+}
+
+.file-item-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.file-item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.file-item-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+}
+
+.move-up-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+.move-down-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+.remove-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.file-item-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.secondary-btn {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    margin: 20px auto;
+    transition: all 0.3s;
+}
+
+.secondary-btn:hover {
+    background-color: #d32f2f;
+}

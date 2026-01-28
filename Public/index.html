@@ -150,7 +150,21 @@ Schreibe hier dein Markdown...
         <div id="status"></div>
     </div>
 </div>
-
+<div id="pdfPreviewModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>📄 PDF-Vorschau</h2>
+            <button class="close-btn" id="closePreview">&times;</button>
+        </div>
+        <div class="modal-body">
+            <iframe id="pdfPreviewFrame" src=""></iframe>
+        </div>
+        <div class="modal-footer">
+            <button id="downloadPdfBtn" class="download-btn">💾 PDF herunterladen</button>
+            <button id="closePreviewBtn" class="secondary-btn">Schließen</button>
+        </div>
+    </div>
+</div>
 <script src="script.js"></script>
 </body>
 </html>

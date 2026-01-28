@@ -279,8 +279,8 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
         document.getElementById('status').style.display = 'block';
 
         if (result.success) {
-            document.getElementById('status').innerHTML =
-                `✅ Fertig! <a href="${result.pdfUrl}" download="${filename}.pdf">PDF herunterladen</a>`;
+            // PDF-Vorschau anzeigen
+            showPdfPreview(result.pdfUrl, filename);
         } else {
             document.getElementById('status').textContent = '❌ Fehler: ' + result.error;
         }
@@ -288,5 +288,60 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
         document.getElementById('loadingContainer').style.display = 'none';
         document.getElementById('status').style.display = 'block';
         document.getElementById('status').textContent = '❌ Fehler: ' + error.message;
+    }
+});
+// PDF Preview Funktionen
+let currentPdfUrl = '';
+let currentPdfFilename = '';
+
+function showPdfPreview(pdfUrl, filename) {
+    currentPdfUrl = pdfUrl;
+    currentPdfFilename = filename;
+
+    const modal = document.getElementById('pdfPreviewModal');
+    const iframe = document.getElementById('pdfPreviewFrame');
+
+    // PDF im iframe laden
+    iframe.src = pdfUrl;
+
+    // Modal anzeigen
+    modal.classList.add('active');
+
+    // Status aktualisieren
+    document.getElementById('status').innerHTML =
+        `✅ PDF erfolgreich erstellt!`;
+}
+
+function closePdfPreview() {
+    const modal = document.getElementById('pdfPreviewModal');
+    const iframe = document.getElementById('pdfPreviewFrame');
+
+    modal.classList.remove('active');
+    iframe.src = '';
+}
+
+// Event Listeners für Modal
+document.getElementById('closePreview').addEventListener('click', closePdfPreview);
+document.getElementById('closePreviewBtn').addEventListener('click', closePdfPreview);
+
+// Download Button
+document.getElementById('downloadPdfBtn').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = currentPdfUrl;
+    link.download = `${currentPdfFilename}.pdf`;
+    link.click();
+});
+
+// Modal schließen bei Klick außerhalb
+document.getElementById('pdfPreviewModal').addEventListener('click', (e) => {
+    if (e.target.id === 'pdfPreviewModal') {
+        closePdfPreview();
+    }
+});
+
+// ESC-Taste zum Schließen
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closePdfPreview();
     }
 });

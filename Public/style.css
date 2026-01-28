@@ -833,9 +833,14 @@ body.dark-mode .tab-btn.active {
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
-/* Dark Mode für PDF Styles */
+/* Dark Mode für PDF Styles Section */
 body.dark-mode .pdf-styles-section {
     background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+body.dark-mode .pdf-styles-section h3 {
+    color: var(--text);
 }
 
 body.dark-mode .style-option select {
@@ -843,7 +848,6 @@ body.dark-mode .style-option select {
     border-color: var(--border);
     color: var(--text);
 }
-
 /* Responsive */
 @media (max-width: 768px) {
     .style-options {
@@ -1038,12 +1042,11 @@ body.dark-mode #pdfPreviewFrame {
 
 .export-format-section h3 {
     text-align: center;
-    color: var(--text);
+    color: var(--text);  /* Statt einer festen Farbe */
     margin-bottom: 24px;
     font-size: 1.4em;
     font-weight: 600;
 }
-
 .format-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1057,12 +1060,11 @@ body.dark-mode #pdfPreviewFrame {
     padding: 24px 20px;
     border: 3px solid var(--border);
     border-radius: 16px;
-    background: white;
+    background: var(--background);  /* Geändert von white */
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-}
 
 .format-btn::before {
     content: '';
@@ -1150,4 +1152,40 @@ body.dark-mode .format-btn.active {
     .format-buttons {
         grid-template-columns: 1fr;
     }
+}
+    /* Dark Mode für Export Format Section */
+    body.dark-mode .export-format-section {
+        background: var(--surface);
+        border: 1px solid var(--border);
+    }
+
+    body.dark-mode .export-format-section h3 {
+        color: var(--text);
+    }
+
+    body.dark-mode .format-btn {
+        background: #1e293b;
+        border-color: #334155;
+    }
+
+    body.dark-mode .format-name {
+        color: var(--text);
+    }
+
+    body.dark-mode .format-desc {
+        color: var(--text-light);
+    }
+
+    body.dark-mode .format-btn:hover {
+        border-color: var(--primary-light);
+        background: #334155;
+    }
+
+    body.dark-mode .format-btn.active {
+        background: rgba(99, 102, 241, 0.2);
+        border-color: var(--primary-light);
+    }}
+body.dark-mode .export-format-section {
+    background: var(--surface) !important;
+    border: 2px solid var(--border);
 }

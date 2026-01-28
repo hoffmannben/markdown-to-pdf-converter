@@ -19,7 +19,16 @@ themeToggle.addEventListener('change', () => {
         localStorage.setItem('darkMode', 'disabled');
     }
 });
+// Export Format Selection
+let selectedFormat = 'pdf';
 
+document.querySelectorAll('.format-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedFormat = btn.dataset.format;
+    });
+});
 // Globale Variablen
 let uploadedFiles = []; // Array für mehrere Dateien
 let uploadMode = 'single'; // 'single' oder 'multiple'
@@ -268,7 +277,15 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
     document.getElementById('status').style.display = 'none';
 
     try {
-        const response = await fetch('/convert', {
+        // Je nach Format die richtige Route aufrufen
+        let endpoint = '/convert'; // PDF
+        if (selectedFormat === 'html') {
+            endpoint = '/export-html';
+        } else if (selectedFormat === 'docx') {
+            endpoint = '/export-docx';
+        }
+
+        const response = await fetch(endpoint, {
             method: 'POST',
             body: formData
         });
@@ -279,8 +296,20 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
         document.getElementById('status').style.display = 'block';
 
         if (result.success) {
-            // PDF-Vorschau anzeigen
-            showPdfPreview(result.pdfUrl, filename);
+            if (selectedFormat === 'pdf') {
+                // PDF-Vorschau anzeigen
+                showPdfPreview(result.pdfUrl, filename);
+            } else {
+                // Direkter Download für HTML/DOCX
+                const extension = selectedFormat;
+                const downloadLink = document.createElement('a');
+                downloadLink.href = result.fileUrl;
+                downloadLink.download = `${filename}.${extension}`;
+                downloadLink.click();
+
+                document.getElementById('status').innerHTML =
+                    `✅ ${extension.toUpperCase()} erfolgreich erstellt! <a href="${result.fileUrl}" download="${filename}.${extension}">Erneut herunterladen</a>`;
+            }
         } else {
             document.getElementById('status').textContent = '❌ Fehler: ' + result.error;
         }

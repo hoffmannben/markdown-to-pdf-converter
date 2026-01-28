@@ -1026,3 +1026,128 @@ body.dark-mode #pdfPreviewFrame {
         width: 100%;
     }
 }
+/* Export Format Section */
+.export-format-section {
+    margin: 32px auto;
+    padding: 32px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow);
+    max-width: 900px;
+}
+
+.export-format-section h3 {
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 24px;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.format-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.format-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 20px;
+    border: 3px solid var(--border);
+    border-radius: 16px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.format-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(79, 70, 229, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.format-btn:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+.format-btn:hover::before {
+    opacity: 1;
+}
+
+.format-btn.active {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+}
+
+.format-btn.active::after {
+    content: '✓';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.format-icon {
+    font-size: 3em;
+    margin-bottom: 12px;
+}
+
+.format-name {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.format-desc {
+    font-size: 0.85em;
+    color: var(--text-light);
+    text-align: center;
+}
+
+/* Dark Mode */
+body.dark-mode .export-format-section {
+    background: var(--surface);
+}
+
+body.dark-mode .format-btn {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+body.dark-mode .format-btn:hover {
+    border-color: var(--primary-light);
+}
+
+body.dark-mode .format-btn.active {
+    background: rgba(99, 102, 241, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .format-buttons {
+        grid-template-columns: 1fr;
+    }
+}

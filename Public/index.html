@@ -4,59 +4,65 @@
     <meta charset="UTF-8">
     <title>Markdown zu PDF Konverter</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Optional: Google Fonts für bessere Typografie -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1>Markdown zu PDF Konverter</h1>
+<div class="container">
+    <h1>✨ Markdown zu PDF Konverter</h1>
 
-<!-- Tabs für Auswahl -->
-<div class="tabs">
-    <button class="tab-btn active" id="uploadTab">Datei hochladen</button>
-    <button class="tab-btn" id="editorTab">Direkt schreiben</button>
-</div>
+    <div class="content-wrapper">
+        <!-- Tabs für Auswahl -->
+        <div class="tabs">
+            <button class="tab-btn active" id="uploadTab">📁 Datei hochladen</button>
+            <button class="tab-btn" id="editorTab">✍️ Direkt schreiben</button>
+        </div>
 
-<!-- Upload-Bereich mit Drag & Drop -->
-<div id="uploadSection" class="section">
-    <!-- Toggle für Einzel/Mehrfach -->
-    <div class="upload-mode-toggle">
-        <label>
-            <input type="radio" name="uploadMode" value="single" checked>
-            Einzelne Datei
-        </label>
-        <label>
-            <input type="radio" name="uploadMode" value="multiple">
-            Mehrere Dateien zusammenfügen
-        </label>
-    </div>
+        <!-- Upload-Bereich mit Drag & Drop -->
+        <div id="uploadSection" class="section">
+            <!-- Toggle für Einzel/Mehrfach -->
+            <div class="upload-mode-toggle">
+                <label>
+                    <input type="radio" name="uploadMode" value="single" checked>
+                    Einzelne Datei
+                </label>
+                <label>
+                    <input type="radio" name="uploadMode" value="multiple">
+                    Mehrere Dateien zusammenfügen
+                </label>
+            </div>
 
-    <div id="dropZone" class="drop-zone">
-        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
-        </svg>
-        <h3 id="dropZoneTitle">Markdown-Datei hier ablegen</h3>
-        <p>oder</p>
-        <label for="fileInput" class="file-input-label">
-            <span id="fileButtonText">Datei auswählen</span>
-        </label>
-        <input type="file" id="fileInput" accept=".md" style="display: none;">
-        <p class="file-info" id="fileInfo"></p>
-    </div>
+            <div id="dropZone" class="drop-zone">
+                <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h3 id="dropZoneTitle">Markdown-Datei hier ablegen</h3>
+                <p>oder</p>
+                <label for="fileInput" class="file-input-label">
+                    <span id="fileButtonText">Datei auswählen</span>
+                </label>
+                <input type="file" id="fileInput" accept=".md" style="display: none;">
+                <p class="file-info" id="fileInfo"></p>
+            </div>
 
-    <!-- Liste der hochgeladenen Dateien (für Mehrfach-Modus) -->
-    <div id="filesList" style="display: none;">
-        <h3>Hochgeladene Dateien (in dieser Reihenfolge):</h3>
-        <ul id="filesListItems"></ul>
-        <button id="clearFilesBtn" class="secondary-btn">Alle entfernen</button>
-    </div>
-</div>
+            <!-- Liste der hochgeladenen Dateien -->
+            <div id="filesList" style="display: none;">
+                <h3>Hochgeladene Dateien (in dieser Reihenfolge):</h3>
+                <ul id="filesListItems"></ul>
+                <button id="clearFilesBtn" class="secondary-btn">Alle entfernen</button>
+            </div>
+        </div>
 
-<!-- Editor-Bereich mit Preview -->
-<div id="editorSection" class="section" style="display: none;">
-    <div class="editor-container">
-        <div class="editor-panel">
-            <h3>Markdown eingeben</h3>
-            <textarea id="markdownEditor" placeholder="# Deine Überschrift
+        <!-- Editor-Bereich mit Preview -->
+        <div id="editorSection" class="section" style="display: none;">
+            <div class="editor-container">
+                <div class="editor-panel">
+                    <h3>📝 Markdown eingeben</h3>
+                    <textarea id="markdownEditor" placeholder="# Deine Überschrift
 
 Schreibe hier dein Markdown...
 
@@ -64,30 +70,33 @@ Schreibe hier dein Markdown...
 - Punkt 2
 
 **Fetter Text** und *kursiver Text*"></textarea>
+                </div>
+                <div class="preview-panel">
+                    <h3>👁️ Live Vorschau</h3>
+                    <div id="markdownPreview"></div>
+                </div>
+            </div>
         </div>
-        <div class="preview-panel">
-            <h3>Live Vorschau</h3>
-            <div id="markdownPreview"></div>
+
+        <!-- Dateiname Eingabe -->
+        <div class="filename-section">
+            <label for="filenameInput">📄 PDF-Dateiname:</label>
+            <input type="text" id="filenameInput" placeholder="mein-dokument" value="dokument">
+            <span>.pdf</span>
         </div>
+
+        <button id="convertBtn">🚀 Konvertieren zu PDF</button>
+
+        <!-- Ladebalken -->
+        <div id="loadingContainer" style="display: none;">
+            <div id="loadingBar"></div>
+            <p id="loadingText">Wird konvertiert...</p>
+        </div>
+
+        <div id="status"></div>
     </div>
 </div>
 
-<!-- Dateiname Eingabe -->
-<div class="filename-section">
-    <label for="filenameInput">PDF-Dateiname:</label>
-    <input type="text" id="filenameInput" placeholder="mein-dokument" value="dokument">
-    <span>.pdf</span>
-</div>
-
-<button id="convertBtn">Konvertieren zu PDF</button>
-
-<!-- Ladebalken -->
-<div id="loadingContainer" style="display: none;">
-    <div id="loadingBar"></div>
-    <p id="loadingText">Wird konvertiert...</p>
-</div>
-
-<div id="status"></div>
 <script src="script.js"></script>
 </body>
 </html>

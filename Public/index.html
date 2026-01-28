@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Markdown zu PDF Konverter</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Optional: Google Fonts für bessere Typografie -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,7 +12,19 @@
 <div class="container">
     <h1>✨ Markdown zu PDF Konverter</h1>
 
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle-container">
+        <span class="theme-label">☀️ Hell</span>
+        <label class="theme-switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider"></span>
+        </label>
+        <span class="theme-label">🌙 Dunkel</span>
+    </div>
+
     <div class="content-wrapper">
+        <!-- Rest bleibt gleich... -->
+
         <!-- Tabs für Auswahl -->
         <div class="tabs">
             <button class="tab-btn active" id="uploadTab">📁 Datei hochladen</button>

@@ -1,4 +1,24 @@
 console.log('JavaScript lädt!');
+// Dark Mode Funktionalität
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Prüfe, ob Dark Mode in localStorage gespeichert ist
+if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark-mode');
+    themeToggle.checked = true;
+}
+
+// Toggle Dark Mode
+themeToggle.addEventListener('change', () => {
+    if (themeToggle.checked) {
+        body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('darkMode', 'disabled');
+    }
+});
 
 // Globale Variablen
 let uploadedFiles = []; // Array für mehrere Dateien

@@ -28,6 +28,9 @@ app.post('/convert', upload.single('markdown'), async (req, res) => {
         const filePath = req.file.path;
         const markdown = fs.readFileSync(filePath, 'utf-8');
 
+        // Dateiname aus Request holen (oder Default verwenden)
+        const filename = req.body.filename || 'output';
+
         // Markdown zu HTML
         const html = marked(markdown);
 
@@ -36,7 +39,7 @@ app.post('/convert', upload.single('markdown'), async (req, res) => {
         const page = await browser.newPage();
         await page.setContent(html);
 
-        const pdfPath = `uploads/output-${Date.now()}.pdf`;
+        const pdfPath = `uploads/${filename}-${Date.now()}.pdf`;
         await page.pdf({ path: pdfPath, format: 'A4' });
 
         await browser.close();

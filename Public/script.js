@@ -71,10 +71,18 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
         }
     }
 
+    // Dateiname holen und validieren
+    let filename = document.getElementById('filenameInput').value.trim();
+    if (!filename) {
+        alert('Bitte gib einen Dateinamen ein');
+        return;
+    }
+
     // Markdown als Blob für FormData erstellen
     const blob = new Blob([markdownContent], { type: 'text/markdown' });
     const formData = new FormData();
     formData.append('markdown', blob, 'document.md');
+    formData.append('filename', filename);  // Dateinamen mitschicken
 
     // Ladebalken anzeigen
     document.getElementById('loadingContainer').style.display = 'block';
@@ -94,7 +102,7 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
 
         if (result.success) {
             document.getElementById('status').innerHTML =
-                `✅ Fertig! <a href="${result.pdfUrl}" download>PDF herunterladen</a>`;
+                `✅ Fertig! <a href="${result.pdfUrl}" download="${filename}.pdf">PDF herunterladen</a>`;
         } else {
             document.getElementById('status').textContent = '❌ Fehler: ' + result.error;
         }

@@ -171,3 +171,34 @@ button {
     margin-top: 10px;
     color: #666;
 }
+/* Dateiname Eingabe */
+.filename-section {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filename-section label {
+    font-weight: bold;
+    color: #333;
+}
+
+#filenameInput {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 200px;
+}
+
+#filenameInput:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.filename-section span {
+    color: #666;
+    font-weight: bold;
+}

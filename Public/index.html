@@ -19,9 +19,12 @@
     <input type="file" id="fileInput" accept=".md">
 </div>
 
-<!-- Editor-Bereich -->
+<!-- Editor-Bereich mit Preview -->
 <div id="editorSection" class="section" style="display: none;">
-        <textarea id="markdownEditor" placeholder="# Deine Überschrift
+    <div class="editor-container">
+        <div class="editor-panel">
+            <h3>Markdown eingeben</h3>
+            <textarea id="markdownEditor" placeholder="# Deine Überschrift
 
 Schreibe hier dein Markdown...
 
@@ -29,6 +32,12 @@ Schreibe hier dein Markdown...
 - Punkt 2
 
 **Fetter Text** und *kursiver Text*"></textarea>
+        </div>
+        <div class="preview-panel">
+            <h3>Live Vorschau</h3>
+            <div id="markdownPreview"></div>
+        </div>
+    </div>
 </div>
 
 <button id="convertBtn">Konvertieren zu PDF</button>

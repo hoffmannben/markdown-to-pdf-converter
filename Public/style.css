@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    max-width: 600px;
+    max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
     text-align: center;
@@ -15,6 +15,124 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: 2px solid #4CAF50;
+    background-color: white;
+    color: #4CAF50;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tab-btn:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+/* Sections */
+.section {
+    margin: 20px 0;
+}
+
+/* Editor Container - Side by Side */
+.editor-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.editor-panel, .preview-panel {
+    text-align: left;
+}
+
+.editor-panel h3, .preview-panel h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Textarea Editor */
+#markdownEditor {
+    width: 100%;
+    min-height: 400px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+#markdownEditor:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+/* Preview */
+#markdownPreview {
+    width: 100%;
+    min-height: 400px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+}
+
+/* Preview Markdown Styling */
+#markdownPreview h1 {
+    font-size: 2em;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+#markdownPreview h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #666;
+    padding-bottom: 8px;
+}
+
+#markdownPreview h3 {
+    font-size: 1.2em;
+}
+
+#markdownPreview ul, #markdownPreview ol {
+    padding-left: 20px;
+}
+
+#markdownPreview code {
+    background-color: #e8e8e8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+}
+
+#markdownPreview pre {
+    background-color: #e8e8e8;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+/* Loading Bar */
 #loadingContainer {
     margin: 20px 0;
 }
@@ -52,54 +170,4 @@ button {
     text-align: center;
     margin-top: 10px;
     color: #666;
-}
-/* Tabs */
-.tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.tab-btn {
-    padding: 10px 20px;
-    border: 2px solid #4CAF50;
-    background-color: white;
-    color: #4CAF50;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: all 0.3s;
-}
-
-.tab-btn.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.tab-btn:hover {
-    background-color: #45a049;
-    color: white;
-}
-
-/* Sections */
-.section {
-    margin: 20px 0;
-}
-
-/* Textarea Editor */
-#markdownEditor {
-    width: 100%;
-    min-height: 300px;
-    padding: 15px;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    resize: vertical;
-    box-sizing: border-box;
-}
-
-#markdownEditor:focus {
-    outline: none;
-    border-color: #4CAF50;
 }

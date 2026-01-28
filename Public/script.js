@@ -13,7 +13,35 @@ document.getElementById('editorTab').addEventListener('click', () => {
     document.getElementById('uploadTab').classList.remove('active');
     document.getElementById('uploadSection').style.display = 'none';
     document.getElementById('editorSection').style.display = 'block';
+    // Preview beim Wechsel aktualisieren
+    updatePreview();
 });
+
+// Live Preview Funktion - Einfache Markdown → HTML Konvertierung
+function updatePreview() {
+    const markdown = document.getElementById('markdownEditor').value;
+    const preview = document.getElementById('markdownPreview');
+
+    // Einfache Markdown-Konvertierung (für Preview)
+    let html = markdown
+        // Headers
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        // Bold
+        .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+        // Italic
+        .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+        // Links
+        .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>')
+        // Line breaks
+        .replace(/\n/gim, '<br>');
+
+    preview.innerHTML = html || '<p style="color: #999;">Deine Vorschau erscheint hier...</p>';
+}
+
+// Live Preview bei jedem Tastendruck aktualisieren
+document.getElementById('markdownEditor').addEventListener('input', updatePreview);
 
 // Konvertieren Button
 document.getElementById('convertBtn').addEventListener('click', async () => {

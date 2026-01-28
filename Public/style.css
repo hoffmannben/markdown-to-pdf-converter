@@ -53,3 +53,53 @@ button {
     margin-top: 10px;
     color: #666;
 }
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: 2px solid #4CAF50;
+    background-color: white;
+    color: #4CAF50;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tab-btn:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+/* Sections */
+.section {
+    margin: 20px 0;
+}
+
+/* Textarea Editor */
+#markdownEditor {
+    width: 100%;
+    min-height: 300px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+#markdownEditor:focus {
+    outline: none;
+    border-color: #4CAF50;
+}

@@ -7,10 +7,33 @@
 </head>
 <body>
 <h1>Markdown zu PDF Konverter</h1>
-<input type="file" id="fileInput" accept=".md">
-<button id="convertBtn">Konvertieren</button>
 
-<!-- Ladebalken hinzufügen -->
+<!-- Tabs für Auswahl -->
+<div class="tabs">
+    <button class="tab-btn active" id="uploadTab">Datei hochladen</button>
+    <button class="tab-btn" id="editorTab">Direkt schreiben</button>
+</div>
+
+<!-- Upload-Bereich -->
+<div id="uploadSection" class="section">
+    <input type="file" id="fileInput" accept=".md">
+</div>
+
+<!-- Editor-Bereich -->
+<div id="editorSection" class="section" style="display: none;">
+        <textarea id="markdownEditor" placeholder="# Deine Überschrift
+
+Schreibe hier dein Markdown...
+
+- Punkt 1
+- Punkt 2
+
+**Fetter Text** und *kursiver Text*"></textarea>
+</div>
+
+<button id="convertBtn">Konvertieren zu PDF</button>
+
+<!-- Ladebalken -->
 <div id="loadingContainer" style="display: none;">
     <div id="loadingBar"></div>
     <p id="loadingText">Wird konvertiert...</p>

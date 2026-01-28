@@ -1,5 +1,66 @@
 console.log('JavaScript lädt!');
+// Drag & Drop Funktionalität
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const fileInfo = document.getElementById('fileInfo');
 
+// Verhindere Standard-Verhalten
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropZone.addEventListener(eventName, preventDefaults, false);
+});
+
+function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
+
+// Hover-Effekt beim Drag
+['dragenter', 'dragover'].forEach(eventName => {
+    dropZone.addEventListener(eventName, () => {
+        dropZone.classList.add('drag-over');
+    }, false);
+});
+
+['dragleave', 'drop'].forEach(eventName => {
+    dropZone.addEventListener(eventName, () => {
+        dropZone.classList.remove('drag-over');
+    }, false);
+});
+
+// Datei beim Drop verarbeiten
+dropZone.addEventListener('drop', (e) => {
+    const files = e.dataTransfer.files;
+    handleFiles(files);
+}, false);
+
+// Datei beim Klick auf Button verarbeiten
+fileInput.addEventListener('change', (e) => {
+    const files = e.target.files;
+    handleFiles(files);
+});
+
+// Click auf Drop Zone öffnet File Dialog
+dropZone.addEventListener('click', () => {
+    fileInput.click();
+});
+
+// Datei-Handling
+function handleFiles(files) {
+    if (files.length > 0) {
+        const file = files[0];
+        if (file.name.endsWith('.md')) {
+            fileInfo.textContent = `✓ ${file.name} ausgewählt`;
+            fileInfo.style.color = '#4CAF50';
+
+            // Automatisch Dateinamen vorschlagen (ohne .md Endung)
+            const suggestedName = file.name.replace('.md', '');
+            document.getElementById('filenameInput').value = suggestedName;
+        } else {
+            fileInfo.textContent = '⚠ Bitte nur .md Dateien hochladen';
+            fileInfo.style.color = '#f44336';
+        }
+    }
+}
 // Tab-Wechsel
 document.getElementById('uploadTab').addEventListener('click', () => {
     document.getElementById('uploadTab').classList.add('active');

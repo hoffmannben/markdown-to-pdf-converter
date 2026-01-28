@@ -14,9 +14,22 @@
     <button class="tab-btn" id="editorTab">Direkt schreiben</button>
 </div>
 
-<!-- Upload-Bereich -->
+<!-- Upload-Bereich mit Drag & Drop -->
 <div id="uploadSection" class="section">
-    <input type="file" id="fileInput" accept=".md">
+    <div id="dropZone" class="drop-zone">
+        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <h3>Markdown-Datei hier ablegen</h3>
+        <p>oder</p>
+        <label for="fileInput" class="file-input-label">
+            Datei auswählen
+        </label>
+        <input type="file" id="fileInput" accept=".md" style="display: none;">
+        <p class="file-info" id="fileInfo"></p>
+    </div>
 </div>
 
 <!-- Editor-Bereich mit Preview -->

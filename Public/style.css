@@ -202,3 +202,74 @@ button {
     color: #666;
     font-weight: bold;
 }
+/* Drop Zone */
+.drop-zone {
+    border: 3px dashed #4CAF50;
+    border-radius: 15px;
+    padding: 60px 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.drop-zone:hover {
+    background-color: #e8f5e9;
+    border-color: #45a049;
+}
+
+.drop-zone.drag-over {
+    background-color: #c8e6c9;
+    border-color: #2e7d32;
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.drop-zone h3 {
+    color: #333;
+    margin: 10px 0;
+    font-size: 1.3em;
+}
+
+.drop-zone p {
+    color: #666;
+    margin: 10px 0;
+}
+
+/* Styled File Input Button */
+.file-input-label {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin: 15px 0;
+}
+
+.file-input-label:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.file-input-label:active {
+    transform: translateY(0);
+}
+
+/* File Info */
+.file-info {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 15px;
+    min-height: 20px;
+}

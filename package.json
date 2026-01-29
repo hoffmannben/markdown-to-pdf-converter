@@ -1,0 +1,28 @@
+{
+  "name": "markdown-to-pdf-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoffmannben/markdown-to-pdf-converter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hoffmannben/markdown-to-pdf-converter/issues"
+  },
+  "homepage": "https://github.com/hoffmannben/markdown-to-pdf-converter#readme",
+  "dependencies": {
+    "docx": "^9.5.1",
+    "express": "^5.2.1",
+    "marked": "^17.0.1",
+    "multer": "^2.0.2",
+    "puppeteer": "^24.36.0"
+  }
+}

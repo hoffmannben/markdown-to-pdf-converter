@@ -833,20 +833,31 @@ body.dark-mode .tab-btn.active {
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
-/* Dark Mode für PDF Styles Section */
-body.dark-mode .pdf-styles-section {
+body.dark-mode .export-format-section {
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
 }
 
-body.dark-mode .pdf-styles-section h3 {
+body.dark-mode .export-format-section h3 {
     color: var(--text);
 }
 
-body.dark-mode .style-option select {
-    background: var(--background);
-    border-color: var(--border);
-    color: var(--text);
+body.dark-mode .format-btn {
+    background: #1e293b;
+    border-color: #334155;
+    /* transition bleibt erhalten, nicht überschreiben! */
+}
+
+body.dark-mode .format-btn:hover {
+    border-color: var(--primary-light);
+    background: #334155;
+    /* transform und box-shadow werden von der ursprünglichen Regel geerbt */
+}
+
+body.dark-mode .format-btn.active {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--primary-light);
+    /* box-shadow wird geerbt */
 }
 /* Responsive */
 @media (max-width: 768px) {
@@ -1060,11 +1071,12 @@ body.dark-mode #pdfPreviewFrame {
     padding: 24px 20px;
     border: 3px solid var(--border);
     border-radius: 16px;
-    background: var(--background);  /* Geändert von white */
+    background: white;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+}
 
 .format-btn::before {
     content: '';
@@ -1184,8 +1196,51 @@ body.dark-mode .format-btn.active {
     body.dark-mode .format-btn.active {
         background: rgba(99, 102, 241, 0.2);
         border-color: var(--primary-light);
-    }}
+    }
 body.dark-mode .export-format-section {
     background: var(--surface) !important;
     border: 2px solid var(--border);
+}
+/* Dark Mode für Export Format - mit Transitions */
+body.dark-mode .format-btn {
+    background: #1e293b;
+    border-color: #334155;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);  /* Wichtig! */
+}
+
+body.dark-mode .format-btn:hover {
+    border-color: var(--primary-light);
+    background: #334155;
+    transform: translateY(-4px);  /* Animation hinzufügen */
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+body.dark-mode .format-btn.active {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--primary-light);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);  /* Schatten beim Aktiv-State */
+    transform: translateY(-2px);
+}
+
+body.dark-mode .format-btn::before {
+    transition: opacity 0.3s;
+}
+/* Dark Mode für PDF Styles Section */
+body.dark-mode .pdf-styles-section {
+    background: var(--surface) !important;
+    border: 2px solid var(--border);
+}
+
+body.dark-mode .pdf-styles-section h3 {
+    color: var(--text) !important;
+}
+
+body.dark-mode .style-option label {
+    color: var(--text);
+}
+
+body.dark-mode .style-option select {
+    background: var(--background);
+    border-color: var(--border);
+    color: var(--text);
 }

@@ -7,7 +7,7 @@ const path = require('path');
 const { Document, Paragraph, TextRun, HeadingLevel, AlignmentType, Packer } = require('docx');
 
 const app = express();
-const port = 3000;
+ const port = process.env.PORT || 3000;
 
 // Upload-Konfiguration
 const upload = multer({ dest: 'uploads/' });
@@ -18,7 +18,7 @@ if (!fs.existsSync('uploads')) {
 }
 
 // Statische Dateien aus public-Ordner bereitstellen
-app.use(express.static('public'));
+app.use(express.static('Public'));
 
 // Uploads-Ordner auch öffentlich machen (für PDF-Download)
 app.use('/uploads', express.static('uploads'));
